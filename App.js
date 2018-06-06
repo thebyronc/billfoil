@@ -6,48 +6,31 @@ import {
   Text,
   View
 } from 'react-native';
+import Styles from './styles/styles';
+import Bill from './components/Bill';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap rrR on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
 
-type Props = {};
-export default class App extends Component<Props> {
+export default class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { name: '', email: '', peopleList: []};
+  }
+
+  updatePeopleList = () => {
+    this.setState({
+      peopleList: [...this.state.peopleList, "test"]
+    });
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
+      <View style={Styles.container}>
+        <Text style={Styles.headerText}>
+          BILL FOIL
         </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js checking for addition tests not loading
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+        <Bill />
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
