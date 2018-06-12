@@ -10,7 +10,7 @@ import {
 import Styles from './styles/styles';
 import Bill from './components/Bill';
 import PeopleScrollView from './components/PeopleScrollView';
-
+import PeopleScreen from './screens/PeopleScreen';
 
 export default class App extends Component {
 
@@ -45,11 +45,16 @@ export default class App extends Component {
         <Text style={Styles.headerText}>
           BILL FOIL {this.state.peopleList.length}
         </Text>
-        <Bill testData={this.state.testData}
+        <PeopleScreen testData={this.state.testData}
+        peopleList={this.state.peopleList}
+        updatePeopleList={this.updatePeopleList}
+        peopleList={this.state.peopleList} />
+
+        {/* <Bill testData={this.state.testData}
         peopleList={this.state.peopleList}
         updatePeopleList={this.updatePeopleList} />
         <PeopleScrollView
-        peopleList={this.state.peopleList} />
+        peopleList={this.state.peopleList} /> */}
       </View>
     );
   }

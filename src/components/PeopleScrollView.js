@@ -28,8 +28,6 @@ export default class PeopleScrollView extends Component {
   render() {
     return (
         <View style={Styles.container}>
-            <Text style={Styles.bodyText}>People Scroll View</Text>
-            
             <ScrollView style={Styles.container}>
                 <FlatList
                 data={this.props.peopleList}
