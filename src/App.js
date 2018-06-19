@@ -7,10 +7,15 @@ import {
   View,
   ToastAndroid
 } from 'react-native';
+import {
+  TabNavigator,
+  StackNavigator,
+} from 'react-navigation';
 import Styles from './styles/styles';
 import Bill from './components/Bill';
 import PeopleScrollView from './components/PeopleScrollView';
 import PeopleScreen from './screens/PeopleScreen';
+import TestScreen from './screens/TestScreen';
 
 export default class App extends Component {
 

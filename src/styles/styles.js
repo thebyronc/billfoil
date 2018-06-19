@@ -53,16 +53,21 @@ let Styles = StyleSheet.create({
     backgroundColor: '#333333',
     borderColor: '#525252',
     borderTopWidth: 1,
-    padding: 8,
+    padding: 15,
+    flex: 1, 
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   textList: {
+    color: '#FFFFFF',
+  },
+  textNumber: {
     color: '#F2F2F2',
-    marginHorizontal: itemHorizontalMargin,
-    marginVertical: itemVerticalMargin,
   },
   contentContainer: {
     paddingTop: 30,
   },
+
 });
 
 export default Styles;

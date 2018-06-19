@@ -10,7 +10,8 @@ import {
   ToastAndroid,
   FlatList,
   TouchableOpacity,
-  AsyncStorage
+  AsyncStorage,
+  KeyboardAwareScrollView
 } from 'react-native';
 import Styles from '../styles/styles';
 import Person from '../models/Person';
@@ -27,20 +28,21 @@ export default class PeopleScrollView extends Component {
 
   render() {
     return (
-        <View style={Styles.container}>
-            <ScrollView style={Styles.container}>
-                <FlatList
-                data={this.props.peopleList}
-                extraData={this.props.peopleList}
-                keyExtractor={(item, index) => index}
-                renderItem={({item}) => (
-                    <View style={Styles.viewList}>
-                    <Text style={Styles.textList}>{item.name} | {item.email}</Text>
-                    </View>
-                )}
-                /> 
-            </ScrollView>
-        </View>
+      <View style={Styles.container}>
+        <ScrollView style={Styles.container} >
+          <FlatList
+          data={this.props.peopleList}
+          extraData={this.props.peopleList}
+          keyExtractor={(item, index) => index}
+          renderItem={({item}) => (
+            <View style={Styles.viewList } > 
+              <Text style={Styles.textList}>{item.name} | {item.email}</Text>
+              <Text style={Styles.textNumber}>{item.userTotal} | {item.numItems}</Text>
+            </View>
+          )}
+          /> 
+        </ScrollView>
+      </View>
     );
   }
 }

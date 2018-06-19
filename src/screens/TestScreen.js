@@ -11,7 +11,7 @@ import Bill from '../components/Bill';
 import PeopleScrollView from '../components/PeopleScrollView';
 
 
-export default class PeopleScreen extends Component {
+export default class TestScreen extends Component {
 
     constructor(props) {
         super(props);

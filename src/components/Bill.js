@@ -25,7 +25,7 @@ export default class Bill extends Component {
   }
 
   handleClick = () => {
-    var person = [{name: this.state.name, email: this.state.email}];
+    var person = [{name: this.state.name, email: this.state.email, userTotal: 0, numItems: 0}];
     var testData = [{name: "testdata String"}];
     this.props.updatePeopleList(...person);
   }
