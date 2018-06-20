@@ -8,37 +8,54 @@ import {
   ToastAndroid
 } from 'react-native';
 import {
-  createBottomTabNavigator,
+    createMaterialTopTabNavigator,
 } from 'react-navigation';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import Styles from '../styles/styles';
+import Colors from '../constants/Colors';
 import PeopleScreen from '../screens/PeopleScreen';
 import TestScreen from '../screens/TestScreen';
 
-export default createBottomTabNavigator(
+export default createMaterialTopTabNavigator(
     {
       People: PeopleScreen,
-      Test: TestScreen,
+      Bill: TestScreen,
     },
     {
-      navigationOptions: ({ navigation }) => ({
-        tabBarIcon: ({ focused, tintColor }) => {
-          const { routeName } = navigation.state;
-          let iconName;
-          if (routeName === 'Home') {
-            iconName = `ios-information-circle${focused ? '' : '-outline'}`;
-          } else if (routeName === 'Settings') {
-            iconName = `ios-options${focused ? '' : '-outline'}`;
-          }
-  
-          // You can return any component that you like here! We usually use an
-          // icon component from react-native-vector-icons
-          return <Ionicons name={iconName} size={25} color={tintColor} />;
+        navigationOptions: ({ navigation }) => ({
+          tabBarIcon: ({ focused, tintColor }) => {
+            const { routeName } = navigation.state;
+            let iconName;
+            if (routeName === 'People') {
+              iconName = `ios-information-circle${focused ? '' : '-outline'}`;
+            } else if (routeName === 'Bill') {
+              iconName = `ios-options${focused ? '' : '-outline'}`;
+            }
+    
+            // You can return any component that you like here! We usually use an
+            // icon component from react-native-vector-icons
+            return <Ionicons name={iconName} size={25} color={tintColor} />;
+          },
+        }),
+        tabBarOptions: {
+            inactiveBackgroundColor: '#757AD1',
+            activeBackgroundColor: '#757AD1', 
+            activeTintColor: '#ffffff',
+            inactiveTintColor: '#ffffff',
+            tintColor: '#fff',
+            activeTintColor: '#fff',
+            inactiveTintColor: '#fff',
+            fontWeight: 'bolder',
+            indicatorStyle: {
+                borderBottomColor: '#4AD9D9',
+                borderBottomWidth: 2,
+            },
+            style: {
+              backgroundColor: '#292929',
+            },
         },
-      }),
-      tabBarOptions: {
-        activeTintColor: 'tomato',
-        inactiveTintColor: 'gray',
-      },
-    }
+        tabStyle: {
+            backgroundColor: '#000',
+          },
+        
+      }
+    
   );

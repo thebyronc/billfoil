@@ -22,14 +22,14 @@ let Styles = StyleSheet.create({
     marginVertical: itemVerticalMargin,
   },
   bodyText: {
-    color: '#F2F2F2',
+    color: '#FFFFFF',
     marginHorizontal: itemHorizontalMargin,
     marginVertical: itemVerticalMargin,
   },
   ctaButton: {
     marginHorizontal: itemHorizontalMargin,
     marginVertical: itemVerticalMargin,
-    backgroundColor: '#4AD9D9',
+    backgroundColor: '#757AD1',
     alignItems: 'center',
     padding: 8,
   },

@@ -16,6 +16,7 @@ import Bill from './components/Bill';
 import PeopleScrollView from './components/PeopleScrollView';
 import PeopleScreen from './screens/PeopleScreen';
 import TestScreen from './screens/TestScreen';
+import RootNavigation from './navigation/RootNavigation';
 
 export default class App extends Component {
 
@@ -47,19 +48,14 @@ export default class App extends Component {
   render() {
     return (
       <View style={Styles.container}>
-        <Text style={Styles.headerText}>
+        {/* <Text style={Styles.headerText}>
           BILL FOIL {this.state.peopleList.length}
         </Text>
         <PeopleScreen testData={this.state.testData}
         peopleList={this.state.peopleList}
         updatePeopleList={this.updatePeopleList}
-        peopleList={this.state.peopleList} />
-
-        {/* <Bill testData={this.state.testData}
-        peopleList={this.state.peopleList}
-        updatePeopleList={this.updatePeopleList} />
-        <PeopleScrollView
         peopleList={this.state.peopleList} /> */}
+        <RootNavigation />
       </View>
     );
   }
