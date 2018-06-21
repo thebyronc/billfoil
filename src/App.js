@@ -15,7 +15,7 @@ import Styles from './styles/styles';
 import Bill from './components/Bill';
 import PeopleScrollView from './components/PeopleScrollView';
 import PeopleScreen from './screens/PeopleScreen';
-import TestScreen from './screens/TestScreen';
+import TestScreen from './screens/ItemScreen';
 import RootNavigation from './navigation/RootNavigation';
 
 export default class App extends Component {
@@ -25,10 +25,11 @@ export default class App extends Component {
     this.state = { 
       name: '', 
       email: '', 
-      peopleList: [], 
+      peopleList: [],
+      itemList: [], 
       testData: 'TestData Passed!'};
   }
-
+  obj = 'testObjString';
   updatePeopleList = (passedData) => {
     this.setState({
       peopleList: [...this.state.peopleList, passedData]
@@ -36,13 +37,31 @@ export default class App extends Component {
     let arrayToPrint = [];
     for(let i = 0; i < this.state.peopleList.length; i++) {
       arrayToPrint.push(this.state.peopleList[i].name);
-      
     }
-    ToastAndroid.showWithGravity(
-      "Size of PeopleList Array: " + arrayToPrint,
-      ToastAndroid.SHORT,
-      ToastAndroid.BOTTOM
-    );
+    // ToastAndroid.showWithGravity(
+    //   "Size of PeopleList Array: " + arrayToPrint,
+    //   ToastAndroid.SHORT,
+    //   ToastAndroid.BOTTOM
+    // );
+
+    this.setState({
+      testData: arrayToPrint
+    });
+  }
+
+  updateItemList = (passedData) => {
+    this.setState({
+      itemList: [...this.state.itemList, passedData]
+    });
+    let arrayToPrint = [];
+    for(let i = 0; i < this.state.itemList.length; i++) {
+      arrayToPrint.push(this.state.itemList[i].name);
+    }
+    // ToastAndroid.showWithGravity(
+    //   "Size of PeopleList Array: " + arrayToPrint,
+    //   ToastAndroid.SHORT,
+    //   ToastAndroid.BOTTOM
+    // );
 
     this.setState({
       testData: arrayToPrint
@@ -59,9 +78,13 @@ export default class App extends Component {
         peopleList={this.state.peopleList}
         updatePeopleList={this.updatePeopleList}
         peopleList={this.state.peopleList} /> */}
-        <RootNavigation screenProps={this.state.testData}
-        peopleList={this.state.peopleList}
-        updatePeopleList={this.updatePeopleList} />
+        <RootNavigation 
+          screenProps={{state: this.state, 
+          updatePeopleList: this.updatePeopleList,
+          updateItemList: this.updateItemList,
+          obj: this.obj,}}
+          peopleList={this.state.peopleList}
+        />
       </View>
     );
   }

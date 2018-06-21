@@ -18,16 +18,20 @@ import Colors from '../constants/Colors';
 
 
 
-export default class Bill extends Component {
+export default class ItemInput extends Component {
   constructor(props) {
     super(props);
-    this.state = { name: '', email: ''};
+    this.state = { itemName: '', itemCost: ''};
   }
 
   handleClick = () => {
-    var person = [{name: this.state.name, email: this.state.email, userTotal: 0, numItems: 0}];
+    var item = [{
+        itemName: this.state.itemName,
+        itemCost: this.state.itemCost,
+        assignedUser: '',
+    }];
     var testData = [{name: "testdata String"}];
-    this.props.updatePeopleList(...person);
+    this.props.updateItemList(...item);
   }
 
   render() {
@@ -35,22 +39,22 @@ export default class Bill extends Component {
       <View style={Styles.container}>
         <TextInput
           style={Styles.textInput}
-          placeholder="Name"
+          placeholder="Item Name"
           placeholderTextColor={Colors.placeHolderTextColor}
-          onChangeText={(name) => this.setState({name})}
-          value={this.state.name}
+          onChangeText={(itemName) => this.setState({itemName})}
+          value={this.state.itemName}
         />
 
         <TextInput
           style={Styles.textInput}
-          placeholder="Email"
+          placeholder="Item Cost"
           placeholderTextColor={Colors.placeHolderTextColor}
-          onChangeText={(email) => this.setState({email})}
-          value={this.state.email}
+          onChangeText={(itemCost) => this.setState({itemCost})}
+          value={this.state.itemCost}
         />
         <TouchableOpacity onPress={this.handleClick}>
           <View style={Styles.ctaButton}>
-            <Text style={Styles.ctaText}>ADD PERSON</Text>
+            <Text style={Styles.ctaText}>ADD ITEM</Text>
           </View>
         </TouchableOpacity>
 

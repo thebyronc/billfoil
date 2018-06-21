@@ -8,10 +8,12 @@ import {
 } from 'react-native';
 import Styles from '../styles/styles';
 import Bill from '../components/Bill';
+import ItemInput from '../components/ItemInput';
 import PeopleScrollView from '../components/PeopleScrollView';
+import ItemScrollView from '../components/ItemScrollView';
 
 
-export default class TestScreen extends Component {
+export default class ItemScreen extends Component {
 
     constructor(props) {
         super(props);
@@ -23,11 +25,12 @@ export default class TestScreen extends Component {
     return (
       
       <View style={Styles.container}>
-        <Bill testData={this.props.testData}
-        peopleList={this.props.peopleList}
-        updatePeopleList={this.props.updatePeopleList} />
-        <PeopleScrollView
-        peopleList={this.props.peopleList} />
+        <ItemInput
+          updateItemList={this.props.screenProps.updateItemList} 
+        />
+        <ItemScrollView
+          itemList={this.props.screenProps.state.itemList} 
+        />
       </View>
     );
   }

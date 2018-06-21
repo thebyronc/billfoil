@@ -12,12 +12,12 @@ import {
 } from 'react-navigation';
 import Colors from '../constants/Colors';
 import PeopleScreen from '../screens/PeopleScreen';
-import TestScreen from '../screens/TestScreen';
+import ItemScreen from '../screens/ItemScreen';
 
 export default createMaterialTopTabNavigator(
     {
       People: PeopleScreen,
-      Bill: TestScreen,
+      Bill: ItemScreen,
     },
     {
         navigationOptions: ({ navigation }) => ({

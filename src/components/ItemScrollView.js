@@ -19,7 +19,7 @@ import Colors from '../constants/Colors';
 
 
 
-export default class PeopleScrollView extends Component {
+export default class ItemScrollView extends Component {
   constructor(props) {
     super(props);
     this.state = { name: '', email: ''};
@@ -31,13 +31,13 @@ export default class PeopleScrollView extends Component {
       <View style={Styles.container}>
         <ScrollView style={Styles.container} >
           <FlatList
-          data={this.props.peopleList}
-          extraData={this.props.peopleList}
+          data={this.props.itemList}
+          extraData={this.props.itemList}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({item}) => (
             <View style={Styles.viewList } > 
-              <Text style={Styles.textList}>{item.name} | {item.email}</Text>
-              <Text style={Styles.textNumber}>${item.userTotal} | {item.numItems}</Text>
+              <Text style={Styles.textList}>{item.itemName} | </Text>
+              <Text style={Styles.textNumber}>${item.itemCost}</Text>
             </View>
           )}
           /> 
