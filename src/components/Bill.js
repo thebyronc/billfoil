@@ -53,7 +53,7 @@ export default class Bill extends Component {
                 <Text style={Styles.ctaText}>ADD PERSON</Text>
               </View>
             </TouchableOpacity>
-            
+            <Text style={Styles.ctaText}>Test Data goes here: {this.props.screenProps}</Text>
             {/* <TextInput
               style={Styles.textInput}
               placeholder="Name"

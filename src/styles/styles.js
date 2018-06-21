@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
+import Colors from '../constants/Colors';
 
 let itemHorizontalMargin = 15;
 let itemVerticalMargin = 10;
@@ -13,10 +14,10 @@ let Styles = StyleSheet.create({
     flex: 1,
   },
   testColor: {
-    color: '#4AD9D9',
+    color: Colors.tintColor,
   },
   headerText: {
-    color: '#4AD9D9',
+    color: Colors.tintColor,
     fontSize: 32,
     marginHorizontal: itemHorizontalMargin,
     marginVertical: itemVerticalMargin,
@@ -29,7 +30,7 @@ let Styles = StyleSheet.create({
   ctaButton: {
     marginHorizontal: itemHorizontalMargin,
     marginVertical: itemVerticalMargin,
-    backgroundColor: '#757AD1',
+    backgroundColor: Colors.tintColor,
     alignItems: 'center',
     padding: 8,
   },

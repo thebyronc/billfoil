@@ -22,7 +22,11 @@ export default class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { name: '', email: '', peopleList: [], testData: ''};
+    this.state = { 
+      name: '', 
+      email: '', 
+      peopleList: [], 
+      testData: 'TestData Passed!'};
   }
 
   updatePeopleList = (passedData) => {
@@ -55,7 +59,9 @@ export default class App extends Component {
         peopleList={this.state.peopleList}
         updatePeopleList={this.updatePeopleList}
         peopleList={this.state.peopleList} /> */}
-        <RootNavigation />
+        <RootNavigation screenProps={this.state.testData}
+        peopleList={this.state.peopleList}
+        updatePeopleList={this.updatePeopleList} />
       </View>
     );
   }

@@ -23,7 +23,8 @@ export default class PeopleScreen extends Component {
     return (
       
       <View style={Styles.container}>
-        <Bill testData={this.props.testData}
+      <Text style={Styles.headerText}>Data: {this.props.screenProps}</Text>
+        <Bill screenProps={this.props.screenProps}
         peopleList={this.props.peopleList}
         updatePeopleList={this.props.updatePeopleList} />
         <PeopleScrollView

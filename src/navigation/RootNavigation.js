@@ -45,17 +45,13 @@ export default createMaterialTopTabNavigator(
             inactiveTintColor: '#fff',
             fontWeight: 'bolder',
             indicatorStyle: {
-                borderBottomColor: '#4AD9D9',
+                borderBottomColor: Colors.tintColor,
                 borderBottomWidth: 2,
             },
             style: {
               backgroundColor: '#292929',
             },
         },
-        tabStyle: {
-            backgroundColor: '#000',
-          },
-        
       }
     
   );
