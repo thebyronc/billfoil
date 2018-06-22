@@ -50,6 +50,16 @@ let Styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 18,
   },
+  pickerBox: {
+    alignSelf: 'stretch',
+    height: 50,
+    marginHorizontal: itemHorizontalMargin,
+    marginVertical: itemVerticalMargin,
+    padding: 8,
+    borderColor: '#F2F2F2',
+    borderWidth: 1,
+    color: '#FFFFFF',
+  },
   viewList: {
     backgroundColor: '#333333',
     borderColor: '#525252',

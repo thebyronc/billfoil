@@ -15,18 +15,17 @@ import ItemScrollView from '../components/ItemScrollView';
 
 export default class ItemScreen extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = { name: '', email: '', peopleList: []};
-      }
-
+  constructor(props) {
+    super(props);
+    this.state = { name: '', email: '', peopleList: []};
+  }
 
   render() {
     return (
-      
       <View style={Styles.container}>
         <ItemInput
-          updateItemList={this.props.screenProps.updateItemList} 
+          updateItemList={this.props.screenProps.updateItemList}
+          peopleList={this.props.screenProps.state.peopleList} 
         />
         <ItemScrollView
           itemList={this.props.screenProps.state.itemList} 

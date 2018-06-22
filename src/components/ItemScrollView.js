@@ -11,7 +11,7 @@ import {
   FlatList,
   TouchableOpacity,
   AsyncStorage,
-  
+
 } from 'react-native';
 import Styles from '../styles/styles';
 import Person from '../models/Person';
@@ -36,7 +36,7 @@ export default class ItemScrollView extends Component {
           keyExtractor={(item, index) => index.toString()}
           renderItem={({item}) => (
             <View style={Styles.viewList } > 
-              <Text style={Styles.textList}>{item.itemName} | </Text>
+              <Text style={Styles.textList}>{item.itemName} | {item.assignedUser} </Text>
               <Text style={Styles.textNumber}>${item.itemCost}</Text>
             </View>
           )}
