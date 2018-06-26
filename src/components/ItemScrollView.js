@@ -24,9 +24,14 @@ export default class ItemScrollView extends Component {
     super(props);
     this.state = { name: '', email: ''};
   }
+  userName(id) {
+    let foundId = this.props.peopleList.findIndex(person => person.id === id);
+    return this.props.peopleList[foundId].name;
+  }
 
-
+  
   render() {
+    
     return (
       <View style={Styles.container}>
         <ScrollView style={Styles.container} >
@@ -36,7 +41,7 @@ export default class ItemScrollView extends Component {
           keyExtractor={(item, index) => index.toString()}
           renderItem={({item}) => (
             <View style={Styles.viewList } > 
-              <Text style={Styles.textList}>{item.itemName} | {item.assignedUser} </Text>
+              <Text style={Styles.textList}>{item.itemName} | {this.userName(item.assignedUser)} </Text>
               <Text style={Styles.textNumber}>${item.itemCost}</Text>
             </View>
           )}

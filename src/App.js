@@ -5,7 +5,7 @@ import {
   StyleSheet,
   Text,
   View,
-  ToastAndroid
+  ToastAndroid,
 } from 'react-native';
 import {
   TabNavigator,
@@ -31,6 +31,7 @@ export default class App extends Component {
   }
   obj = 'testObjString';
   updatePeopleList = (passedData) => {
+    passedData.id = this.state.peopleList.length;
     this.setState({
       peopleList: [...this.state.peopleList, passedData]
     });
@@ -38,11 +39,11 @@ export default class App extends Component {
     for(let i = 0; i < this.state.peopleList.length; i++) {
       arrayToPrint.push(this.state.peopleList[i].name);
     }
-    // ToastAndroid.showWithGravity(
-    //   "Size of PeopleList Array: " + arrayToPrint,
-    //   ToastAndroid.SHORT,
-    //   ToastAndroid.BOTTOM
-    // );
+    ToastAndroid.showWithGravity(
+      passedData.name + " Added",
+      ToastAndroid.SHORT,
+      ToastAndroid.BOTTOM
+    );
 
     this.setState({
       testData: arrayToPrint
@@ -57,20 +58,40 @@ export default class App extends Component {
     for(let i = 0; i < this.state.itemList.length; i++) {
       arrayToPrint.push(this.state.itemList[i].name);
     }
-    // ToastAndroid.showWithGravity(
-    //   "Size of PeopleList Array: " + arrayToPrint,
-    //   ToastAndroid.SHORT,
-    //   ToastAndroid.BOTTOM
-    // );
+    this.addItemToPeople(passedData);
+  }
 
-    this.setState({
-      testData: arrayToPrint
-    });
+  addItemToPeople = (passedData) => {
+    if(this.state.peopleList.length < 1) {
+      let newPeopleList = this.state.peopleList;
+      ToastAndroid.showWithGravity(
+        "Less than 1: " + this.state.peopleList.length,
+        ToastAndroid.SHORT,
+        ToastAndroid.BOTTOM
+      );
+    } else if (this.state.peopleList.length >= 1) {
+      newPeopleList = this.state.peopleList.slice();
+      let foundId = newPeopleList.findIndex(person => person.id === passedData.assignedUser);
+      newPeopleList[foundId].userTotal = parseFloat(newPeopleList[foundId].userTotal) + parseFloat(passedData.itemCost);
+      this.setState({
+        peopleList: [...newPeopleList]
+      });
+
+      ToastAndroid.showWithGravity(
+        "Found User total: " + foundId,
+        ToastAndroid.SHORT,
+        ToastAndroid.BOTTOM
+      );
+    }
+
+    
   }
 
   render() {
     return (
-      <View style={Styles.container}>
+      <View 
+        style={Styles.container}
+      >
         {/* <Text style={Styles.headerText}>
           BILL FOIL {this.state.peopleList.length}
         </Text>

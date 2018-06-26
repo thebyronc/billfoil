@@ -8,7 +8,7 @@ let itemVerticalMargin = 10;
 let Styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#292929",
+    backgroundColor: "#000000",
   },
   containerWrap: {
     flex: 1,
@@ -45,10 +45,11 @@ let Styles = StyleSheet.create({
     marginHorizontal: itemHorizontalMargin,
     marginVertical: itemVerticalMargin,
     padding: 8,
-    borderColor: '#F2F2F2',
-    borderWidth: 1,
+    backgroundColor:'#333333',
+    borderWidth: 0,
     color: '#FFFFFF',
     fontSize: 18,
+    
   },
   pickerBox: {
     alignSelf: 'stretch',
@@ -57,6 +58,7 @@ let Styles = StyleSheet.create({
     marginVertical: itemVerticalMargin,
     padding: 8,
     borderColor: '#F2F2F2',
+    backgroundColor:'#333333',
     borderWidth: 1,
     color: '#FFFFFF',
   },

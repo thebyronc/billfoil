@@ -23,12 +23,13 @@ export default class ItemScreen extends Component {
   render() {
     return (
       <View style={Styles.container}>
+        <ItemScrollView
+          itemList={this.props.screenProps.state.itemList} 
+          peopleList={this.props.screenProps.state.peopleList} 
+        />
         <ItemInput
           updateItemList={this.props.screenProps.updateItemList}
           peopleList={this.props.screenProps.state.peopleList} 
-        />
-        <ItemScrollView
-          itemList={this.props.screenProps.state.itemList} 
         />
       </View>
     );

@@ -36,7 +36,7 @@ export default class PeopleScrollView extends Component {
           keyExtractor={(item, index) => index.toString()}
           renderItem={({item}) => (
             <View style={Styles.viewList } > 
-              <Text style={Styles.textList}>{item.name} | {item.email}</Text>
+              <Text style={Styles.textList}>{item.id}: {item.name} | {item.email}</Text>
               <Text style={Styles.textNumber}>${item.userTotal} | {item.numItems}</Text>
             </View>
           )}
