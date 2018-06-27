@@ -5,6 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
   Picker,
+  KeyboardAvoidingView,
 } from 'react-native';
 import Styles from '../styles/styles';
 import Colors from '../constants/Colors';
@@ -32,7 +33,11 @@ export default class ItemInput extends Component {
     });
 
     return (
-      <View style={Styles.container}>
+      <View style={{flex: 1}}>
+        <KeyboardAvoidingView 
+        behavior="position" 
+        keyboardVerticalOffset={200}
+        enabled>
         <TextInput
           style={Styles.textInput}
           placeholder="Item Name"
@@ -41,27 +46,36 @@ export default class ItemInput extends Component {
           onChangeText={(itemName) => this.setState({itemName})}
           value={this.state.itemName}
         />
+        <View style={{ flexDirection: 'row'}}>
+          <View style={{ flex: 1,}}>
+            <TextInput
+            style={Styles.textInput}
+            placeholder="Item Cost"
+            placeholderTextColor={Colors.placeHolderTextColor}
+            keyboardType="numeric"
+            underlineColorAndroid='transparent'
+            onChangeText={(itemCost) => this.setState({itemCost})}
+            value={this.state.itemCost}
+            />
+          </View>
+          <View style={{flex: 1}}>
+            <Picker
+            selectedValue={this.state.assignedUser}
+            style={Styles.pickerBox}
+            onValueChange={(itemValue, itemIndex) => this.setState({assignedUser: itemValue})}>
+              {userList}
+           </Picker>
+          </View>
 
-        <TextInput
-          style={Styles.textInput}
-          placeholder="Item Cost"
-          placeholderTextColor={Colors.placeHolderTextColor}
-          keyboardType="numeric"
-          underlineColorAndroid='transparent'
-          onChangeText={(itemCost) => this.setState({itemCost})}
-          value={this.state.itemCost}
-        />
-        <Picker
-          selectedValue={this.state.assignedUser}
-          style={Styles.pickerBox}
-          onValueChange={(itemValue, itemIndex) => this.setState({assignedUser: itemValue})}>
-            {userList}
-        </Picker>
+        </View>
+        
+        
         <TouchableOpacity onPress={this.handleClick}>
           <View style={Styles.ctaButton}>
             <Text style={Styles.ctaText}>ADD ITEM</Text>
           </View>
         </TouchableOpacity>
+        </KeyboardAvoidingView>
       </View>
     );
   }

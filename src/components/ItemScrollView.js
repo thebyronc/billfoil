@@ -33,7 +33,7 @@ export default class ItemScrollView extends Component {
   render() {
     
     return (
-      <View style={Styles.container}>
+      <View style={{flex: 2}}>
         <ScrollView style={Styles.container} >
           <FlatList
           data={this.props.itemList}

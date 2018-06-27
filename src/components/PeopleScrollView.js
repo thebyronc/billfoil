@@ -28,7 +28,7 @@ export default class PeopleScrollView extends Component {
 
   render() {
     return (
-      <View style={Styles.container}>
+      <View style={{flex: 2}}>
         <ScrollView style={Styles.container} >
           <FlatList
           data={this.props.peopleList}
@@ -37,7 +37,7 @@ export default class PeopleScrollView extends Component {
           renderItem={({item}) => (
             <View style={Styles.viewList } > 
               <Text style={Styles.textList}>{item.id}: {item.name} | {item.email}</Text>
-              <Text style={Styles.textNumber}>${item.userTotal} | {item.numItems}</Text>
+              <Text style={Styles.textNumber}>${item.userTotal}</Text>
             </View>
           )}
           /> 

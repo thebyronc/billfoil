@@ -24,10 +24,12 @@ export default class ItemScreen extends Component {
     return (
       <View style={Styles.container}>
         <ItemScrollView
+          style={{flex: 2}}
           itemList={this.props.screenProps.state.itemList} 
           peopleList={this.props.screenProps.state.peopleList} 
         />
         <ItemInput
+          
           updateItemList={this.props.screenProps.updateItemList}
           peopleList={this.props.screenProps.state.peopleList} 
         />
