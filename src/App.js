@@ -17,6 +17,7 @@ import PeopleScrollView from './components/PeopleScrollView';
 import PeopleScreen from './screens/PeopleScreen';
 import TestScreen from './screens/ItemScreen';
 import RootNavigation from './navigation/RootNavigation';
+import * as firebase from 'firebase';
 
 export default class App extends Component {
 
