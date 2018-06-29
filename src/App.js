@@ -17,7 +17,7 @@ import PeopleScrollView from './components/PeopleScrollView';
 import PeopleScreen from './screens/PeopleScreen';
 import TestScreen from './screens/ItemScreen';
 import RootNavigation from './navigation/RootNavigation';
-import * as firebase from 'firebase';
+import firebase from 'firebase';
 
 export default class App extends Component {
 
@@ -30,7 +30,18 @@ export default class App extends Component {
       itemList: [], 
       testData: 'TestData Passed!'};
   }
-  obj = 'testObjString';
+  firebaseDB = firebase.initializeApp({
+      apiKey: "AIzaSyBNJ9zZBDuZK089PXTXRj4OyKv9hFCFZLc",
+      authDomain: "billfoil-a22de.firebaseapp.com",
+      databaseURL: "https://billfoil-a22de.firebaseio.com",
+      projectId: "billfoil-a22de",
+      storageBucket: "billfoil-a22de.appspot.com",
+      messagingSenderId: "564198582002"
+  });
+
+
+
+
   updatePeopleList = (passedData) => {
     passedData.id = this.state.peopleList.length;
     this.setState({
@@ -44,6 +55,9 @@ export default class App extends Component {
       passedData.name + " Added",
       ToastAndroid.SHORT,
       ToastAndroid.BOTTOM
+    );
+    firebaseDB.database().push(
+      {test: 'test'}
     );
 
     this.setState({
