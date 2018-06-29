@@ -33,7 +33,7 @@ export default class ItemInput extends Component {
     });
 
     return (
-      <View style={{flex: 1}}>
+      <View style={{height: 200}}>
         <KeyboardAvoidingView 
         behavior="position" 
         keyboardVerticalOffset={200}

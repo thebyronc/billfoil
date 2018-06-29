@@ -32,7 +32,7 @@ export default class Bill extends Component {
 
   render() {
     return (
-      <View style={{flex: 1}}>
+      <View style={{height: 200}}>
         <TextInput
           style={Styles.textInput}
           autoCorrect={false}
