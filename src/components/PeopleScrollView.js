@@ -22,9 +22,9 @@ import Colors from '../constants/Colors';
 export default class PeopleScrollView extends Component {
   constructor(props) {
     super(props);
-    this.state = { name: '', email: ''};
+    this.state = { peopleList: []};
   }
-
+  
 
   render() {
     return (

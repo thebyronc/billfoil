@@ -30,17 +30,28 @@ export default class App extends Component {
       itemList: [], 
       testData: 'TestData Passed!'};
   }
+
   firebaseDB = firebase.initializeApp({
-      apiKey: "AIzaSyBNJ9zZBDuZK089PXTXRj4OyKv9hFCFZLc",
-      authDomain: "billfoil-a22de.firebaseapp.com",
-      databaseURL: "https://billfoil-a22de.firebaseio.com",
-      projectId: "billfoil-a22de",
-      storageBucket: "billfoil-a22de.appspot.com",
-      messagingSenderId: "564198582002"
+    apiKey: "AIzaSyBNJ9zZBDuZK089PXTXRj4OyKv9hFCFZLc",
+    authDomain: "billfoil-a22de.firebaseapp.com",
+    databaseURL: "https://billfoil-a22de.firebaseio.com",
+    projectId: "billfoil-a22de",
+    storageBucket: "billfoil-a22de.appspot.com",
+    messagingSenderId: "564198582002"
   });
 
-
-
+  componentDidMount() {
+    let dataRetrieved = this.firebaseDB.database().ref('people');
+    let parsedData = dataRetrieved.once('value')
+    .then(function(snapshot){
+      console.log('testResponse 101:' + JSON.stringify(snapshot));
+      this.setState({
+        peopleList: ["12"]
+      });
+    });
+    
+    
+  }
 
   updatePeopleList = (passedData) => {
     passedData.id = this.state.peopleList.length;
@@ -56,8 +67,8 @@ export default class App extends Component {
       ToastAndroid.SHORT,
       ToastAndroid.BOTTOM
     );
-    firebaseDB.database().push(
-      {test: 'test'}
+    this.firebaseDB.database().ref('people').push(
+      {...passedData}
     );
 
     this.setState({
@@ -87,7 +98,7 @@ export default class App extends Component {
     } else if (this.state.peopleList.length >= 1) {
       newPeopleList = this.state.peopleList.slice();
       let foundId = newPeopleList.findIndex(person => person.id === passedData.assignedUser);
-      newPeopleList[foundId].userTotal = parseFloat(newPeopleList[foundId].userTotal) + parseFloat(passedData.itemCost);
+      newPeopleList[foundId].userTotal = parseFloat(newPeopleList[foundId].userTotal).toFixed(2) + parseFloat(passedData.itemCost).toFixed(2);
       this.setState({
         peopleList: [...newPeopleList]
       });
@@ -98,7 +109,6 @@ export default class App extends Component {
         ToastAndroid.BOTTOM
       );
     }
-
     
   }
 
