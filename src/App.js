@@ -39,14 +39,35 @@ export default class App extends Component {
     storageBucket: "billfoil-a22de.appspot.com",
     messagingSenderId: "564198582002"
   });
-
+  peopleRef = this.firebaseDB.database().ref('people');
   componentDidMount() {
-    let dataRetrieved = this.firebaseDB.database().ref('people');
-    let parsedData = dataRetrieved.once('value')
-    .then(function(snapshot){
-      console.log('testResponse 101:' + JSON.stringify(snapshot));
+    
+    // let parsedData = peopleRef.once('value')
+    // .then(function(snapshot){
+    //   console.log('testResponse 101:' + JSON.stringify(snapshot));
+    //   let peopleArray = [];
+    //   for (let key in snapshot) {
+        
+    //   }
+    //   this.setState({
+    //     peopleList: ["12"]
+    //   });
+    // });
+
+    this.peopleRef.on('value', (snapshot) => {
+      let peoples = snapshot.val();
+      let newState = [];
+      for(let people in peoples) {
+        newState.push({
+          id: people,
+          name: peoples[people].name,
+          email: peoples[people].email,
+          numItems: peoples[people].numItems,
+          userTotal: peoples[people].userTotal
+        });
+      }
       this.setState({
-        peopleList: ["12"]
+        peopleList: newState
       });
     });
     
@@ -74,6 +95,9 @@ export default class App extends Component {
     this.setState({
       testData: arrayToPrint
     });
+  }
+  removePeople(personId) {
+    
   }
 
   updateItemList = (passedData) => {
