@@ -12,22 +12,21 @@ import PeopleScrollView from '../components/PeopleScrollView';
 
 
 export default class PeopleScreen extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = { name: '', email: '', peopleList: []};
-      }
-
+  constructor(props) {
+      super(props);
+      this.state = { name: '', email: '', peopleList: []};
+  }
 
   render() {
     return (
       
       <View style={Styles.container}>
-        {/* <Text style={Styles.bodyText}>Data: {this.props.screenProps.state.testData}</Text> */}
         <PeopleScrollView
-        peopleList={this.props.screenProps.state.peopleList} />
+        peopleList={this.props.screenProps.state.peopleList}
+        itemList={this.props.screenProps.state.itemList} />
         <Bill testData={this.props.screenProps.obj}
         peopleList={this.props.peopleList}
+        
         updatePeopleList={this.props.screenProps.updatePeopleList} />
       </View>
     );

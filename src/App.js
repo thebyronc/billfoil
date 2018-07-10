@@ -29,6 +29,9 @@ export default class App extends Component {
       peopleList: [],
       itemList: [], 
       testData: 'TestData Passed!'};
+    console.ignoredYellowBox = [
+      'Setting a timer'
+    ];
   }
 
   firebaseDB = firebase.initializeApp({
@@ -39,7 +42,9 @@ export default class App extends Component {
     storageBucket: "billfoil-a22de.appspot.com",
     messagingSenderId: "564198582002"
   });
+
   peopleRef = this.firebaseDB.database().ref('people');
+  itemRef = this.firebaseDB.database().ref('item');
   componentDidMount() {
     
     // let parsedData = peopleRef.once('value')
@@ -70,45 +75,61 @@ export default class App extends Component {
         peopleList: newState
       });
     });
+
+    this.itemRef.on('value', (snapshot) => {
+      let items = snapshot.val();
+      let newState = [];
+      for(let item in items) {
+        newState.push({
+          id: item,
+          itemName: items[item].itemName, 
+          itemCost: items[item].itemCost,
+          assignedUser: items[item].assignedUser
+        });
+      }
+      this.setState({
+        itemList: newState
+      });
+    });
     
     
   }
 
   updatePeopleList = (passedData) => {
-    passedData.id = this.state.peopleList.length;
-    this.setState({
-      peopleList: [...this.state.peopleList, passedData]
-    });
-    let arrayToPrint = [];
-    for(let i = 0; i < this.state.peopleList.length; i++) {
-      arrayToPrint.push(this.state.peopleList[i].name);
-    }
+    // passedData.id = this.state.peopleList.length;
+    // this.setState({
+    //   peopleList: [...this.state.peopleList, passedData]
+    // });
+  
     ToastAndroid.showWithGravity(
       passedData.name + " Added",
       ToastAndroid.SHORT,
       ToastAndroid.BOTTOM
     );
-    this.firebaseDB.database().ref('people').push(
+    this.peopleRef.push(
       {...passedData}
     );
 
-    this.setState({
-      testData: arrayToPrint
-    });
   }
+  
   removePeople(personId) {
     
   }
 
   updateItemList = (passedData) => {
+    this.itemRef.push(
+      {...passedData}
+    );
+
     this.setState({
       itemList: [...this.state.itemList, passedData]
     });
+
     let arrayToPrint = [];
     for(let i = 0; i < this.state.itemList.length; i++) {
       arrayToPrint.push(this.state.itemList[i].name);
     }
-    this.addItemToPeople(passedData);
+    // this.addItemToPeople(passedData);
   }
 
   addItemToPeople = (passedData) => {

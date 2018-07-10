@@ -29,7 +29,7 @@ export default class ItemInput extends Component {
 
   render() {
     let userList = this.props.peopleList.map( (s, i) => {
-        return <Picker.Item key={i} value={s.id} label={s.id + ': ' + s.name} />
+        return <Picker.Item key={i} value={s.id} label={s.name} />
     });
 
     return (
