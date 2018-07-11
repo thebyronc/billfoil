@@ -10,12 +10,10 @@ import Styles from './styles/styles';
 
 
 export default class FoilScreen extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = { name: '', email: '', peopleList: []};
-      }
-
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
   render() {
     return (

@@ -18,6 +18,7 @@ import PeopleScreen from './screens/PeopleScreen';
 import TestScreen from './screens/ItemScreen';
 import RootNavigation from './navigation/RootNavigation';
 import firebase from 'firebase';
+import firebaseConfig from './constants/firebaseConfig';
 
 export default class App extends Component {
 
@@ -29,19 +30,9 @@ export default class App extends Component {
       peopleList: [],
       itemList: [], 
       testData: 'TestData Passed!'};
-    console.ignoredYellowBox = [
-      'Setting a timer'
-    ];
+    console.ignoredYellowBox = ['Setting a timer'];
   }
-
-  firebaseDB = firebase.initializeApp({
-    apiKey: "AIzaSyBNJ9zZBDuZK089PXTXRj4OyKv9hFCFZLc",
-    authDomain: "billfoil-a22de.firebaseapp.com",
-    databaseURL: "https://billfoil-a22de.firebaseio.com",
-    projectId: "billfoil-a22de",
-    storageBucket: "billfoil-a22de.appspot.com",
-    messagingSenderId: "564198582002"
-  });
+  firebaseDB = firebase.initializeApp(firebaseConfig);
 
   peopleRef = this.firebaseDB.database().ref('people');
   itemRef = this.firebaseDB.database().ref('item');
