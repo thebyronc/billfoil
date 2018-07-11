@@ -27,9 +27,7 @@ export default class PeopleScrollView extends Component {
   }
   userTotal(id) {
     let foundId = this.props.peopleList.findIndex(person => person.id === id);
-    // return this.props.peopleList[foundId].name;
     let totalCost = 0;
-    let loopCount = 0;
     if( 0 == this.props.itemList.length ) {
       console.log('itemList size: ' + this.props.itemList.length);
     } else {
@@ -37,7 +35,6 @@ export default class PeopleScrollView extends Component {
         if (id == this.props.itemList[i].assignedUser) {
           totalCost += parseFloat(this.props.itemList[i].itemCost);
         }
-        loopCount += 1;
       }
       console.log('itemList size: ' + JSON.stringify(this.props.itemList));
       console.log('User ID: ' + JSON.stringify(id));

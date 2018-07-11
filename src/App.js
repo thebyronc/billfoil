@@ -96,11 +96,6 @@ export default class App extends Component {
   }
 
   updatePeopleList = (passedData) => {
-    // passedData.id = this.state.peopleList.length;
-    // this.setState({
-    //   peopleList: [...this.state.peopleList, passedData]
-    // });
-  
     ToastAndroid.showWithGravity(
       passedData.name + " Added",
       ToastAndroid.SHORT,
@@ -109,7 +104,6 @@ export default class App extends Component {
     this.peopleRef.push(
       {...passedData}
     );
-
   }
   
   removePeople(personId) {
@@ -159,16 +153,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <View 
-        style={Styles.container}
-      >
-        {/* <Text style={Styles.headerText}>
-          BILL FOIL {this.state.peopleList.length}
-        </Text>
-        <PeopleScreen testData={this.state.testData}
-        peopleList={this.state.peopleList}
-        updatePeopleList={this.updatePeopleList}
-        peopleList={this.state.peopleList} /> */}
+      <View style={Styles.container}>
         <RootNavigation 
           screenProps={{state: this.state, 
           updatePeopleList: this.updatePeopleList,

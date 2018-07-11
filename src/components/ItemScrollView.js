@@ -24,9 +24,13 @@ export default class ItemScrollView extends Component {
     super(props);
     this.state = { name: '', email: ''};
   }
-  userName(id) {
-    let foundId = this.props.peopleList.findIndex(person => person.id === id);
-    return this.props.peopleList[foundId].name;
+  userName(assignedUser) {
+    let foundId = this.props.peopleList.findIndex(person => person.id === assignedUser);
+    if(foundId >= 0) {
+      return this.props.peopleList[foundId].name;
+    } else {
+      return "";
+    }
   }
 
   

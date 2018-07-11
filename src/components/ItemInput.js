@@ -13,23 +13,24 @@ import Colors from '../constants/Colors';
 export default class ItemInput extends Component {
   constructor(props) {
     super(props);
-    this.state = { itemName: '', 
-    itemCost: '',
-    assignedUser: '',};
+    this.state = { 
+      itemName: '', 
+      itemCost: '',
+      assignedUser: '',};
   }
 
   handleClick = () => {
     var item = [{
-        itemName: this.state.itemName,
-        itemCost: this.state.itemCost,
-        assignedUser: this.state.assignedUser,
+      itemName: this.state.itemName,
+      itemCost: this.state.itemCost,
+      assignedUser: this.state.assignedUser,
     }];
     this.props.updateItemList(...item);
   }
 
   render() {
     let userList = this.props.peopleList.map( (s, i) => {
-        return <Picker.Item key={i} value={s.id} label={s.name} />
+      return <Picker.Item key={i} value={s.id} label={s.name} />
     });
 
     return (
