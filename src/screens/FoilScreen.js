@@ -6,7 +6,7 @@ import {
   Text,
   View
 } from 'react-native';
-import Styles from './styles/styles';
+import Styles from '../styles/styles';
 
 
 export default class FoilScreen extends Component {

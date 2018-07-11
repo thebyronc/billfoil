@@ -22,23 +22,21 @@ import Colors from '../constants/Colors';
 export default class PeopleScrollView extends Component {
   constructor(props) {
     super(props);
-    this.state = { peopleList: [],
-      refreshing: false,};
+    this.state = { 
+      peopleList: [],
+      refreshing: false,
+    };
   }
   userTotal(id) {
     let foundId = this.props.peopleList.findIndex(person => person.id === id);
     let totalCost = 0;
     if( 0 == this.props.itemList.length ) {
-      console.log('itemList size: ' + this.props.itemList.length);
     } else {
       for(let i = 0; i < this.props.itemList.length; i++) {
         if (id == this.props.itemList[i].assignedUser) {
           totalCost += parseFloat(this.props.itemList[i].itemCost);
         }
       }
-      console.log('itemList size: ' + JSON.stringify(this.props.itemList));
-      console.log('User ID: ' + JSON.stringify(id));
-      console.log('item ID: ' + JSON.stringify(this.props.itemList[1].id));
     }
     
     return totalCost;

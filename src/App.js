@@ -114,31 +114,45 @@ export default class App extends Component {
     for(let i = 0; i < this.state.itemList.length; i++) {
       arrayToPrint.push(this.state.itemList[i].name);
     }
-    // this.addItemToPeople(passedData);
+    this.addItemToPeople(passedData);
+    console.log('passed data: ' + JSON.stringify(passedData));
   }
 
   addItemToPeople = (passedData) => {
-    if(this.state.peopleList.length < 1) {
-      let newPeopleList = this.state.peopleList;
-      ToastAndroid.showWithGravity(
-        "Less than 1: " + this.state.peopleList.length,
-        ToastAndroid.SHORT,
-        ToastAndroid.BOTTOM
-      );
-    } else if (this.state.peopleList.length >= 1) {
+    this.setState({
+      peopleList: this.state.peopleList
+    });
+    console.log('passed data: ' + JSON.stringify(passedData));
+
+    if (this.state.peopleList.length >= 1) {
       newPeopleList = this.state.peopleList.slice();
       let foundId = newPeopleList.findIndex(person => person.id === passedData.assignedUser);
-      newPeopleList[foundId].userTotal = parseFloat(newPeopleList[foundId].userTotal).toFixed(2) + parseFloat(passedData.itemCost).toFixed(2);
+      newPeopleList[foundId].numItems += 1;
       this.setState({
         peopleList: [...newPeopleList]
       });
-
-      ToastAndroid.showWithGravity(
-        "Found User total: " + foundId,
-        ToastAndroid.SHORT,
-        ToastAndroid.BOTTOM
-      );
     }
+    // if(this.state.peopleList.length < 1) {
+    //   let newPeopleList = this.state.peopleList;
+    //   ToastAndroid.showWithGravity(
+    //     "Less than 1: " + this.state.peopleList.length,
+    //     ToastAndroid.SHORT,
+    //     ToastAndroid.BOTTOM
+    //   );
+    // } else if (this.state.peopleList.length >= 1) {
+    //   newPeopleList = this.state.peopleList.slice();
+    //   let foundId = newPeopleList.findIndex(person => person.id === passedData.assignedUser);
+    //   newPeopleList[foundId].userTotal = parseFloat(newPeopleList[foundId].userTotal).toFixed(2) + parseFloat(passedData.itemCost).toFixed(2);
+    //   this.setState({
+    //     peopleList: [...newPeopleList]
+    //   });
+
+    //   ToastAndroid.showWithGravity(
+    //     "Found User total: " + foundId,
+    //     ToastAndroid.SHORT,
+    //     ToastAndroid.BOTTOM
+    //   );
+    // }
     
   }
 

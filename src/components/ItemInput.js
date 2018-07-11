@@ -18,7 +18,13 @@ export default class ItemInput extends Component {
       itemCost: '',
       assignedUser: '',};
   }
-
+  componentDidMount() {
+    console.log('Check Length: ' +this.props.peopleList.length);
+    if(this.props.peopleList.length > 0){
+      this.setState({assignedUser: this.props.peopleList[0].id});
+    }
+    
+  }
   handleClick = () => {
     var item = [{
       itemName: this.state.itemName,
