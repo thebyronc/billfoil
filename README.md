@@ -35,4 +35,4 @@ Ultimate goal for myself is to create a fully functional application.
 This project was built with [React-Native](https://facebook.github.io/react-native/).
 
 ### Author
-**Byron Chang**
+**Byron Chang** 8/17/2018
